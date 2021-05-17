@@ -1,5 +1,4 @@
-# infosec_interview_questions
-Interview questions for SOC Analyst, Sec Engineering, etc
+# Interview questions for SOC Analyst, Sec Engineering, etc
 
 ### Explain in your own words what data leakage is.
 - Data leakage is the unauthorized transmission of data from within an organization to an external destination or recipient.
