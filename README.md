@@ -1,4 +1,9 @@
-# Interview questions for SOC Analyst, Sec Engineering, etc
+## Interview questions for SOC Analyst, Sec Engineering, etc
+
+### Tell me about yourself tips
+1. Explain your skills and abilities that will help you excel in the role.
+2. Added value to the company
+3.
 
 ### Explain in your own words what data leakage is.
 - Data leakage is the unauthorized transmission of data from within an organization to an external destination or recipient.
@@ -168,14 +173,18 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - **Browser DNS Cache**: Records are cached for a set amount of time. The browser cache is the first place searched for the requested record.
 - **OS level Cache (Stub Resolver/DNS Client)**: 2nd and last local stop before a DNS query leaves your machine. When a request is received, it checks it's own cache for the record, if it is not found a DNS query(Recursive Flag) it sent outside the local network to a DNS recursive resolver inside the ISP
 - **Recursive resolver DNS cache**: Will also check to see if host-to-IP address translation is already in the location persistence layer.
-- If there is no A record, but a NS record for the authoratative server it will query the name server directly, bypassing steps in the query. Allows for DNS queries to occur faster.
+- If there is no A record, but a NS record for the authoritative server it will query the name server directly, bypassing steps in the query. Allows for DNS queries to occur faster.
 - If there is no NS record, a query is sent to TLD, skipping the root server
 - If there a no records pointing to a TLD server, it will then query the root servers. Typically occurs after DNS cache purge
 
 ### What is the difference between hashing and encryption?
-- Encryption is a two way function, what is encrypted can be decrypted
-with the proper key.
-- Hashing is a one way function that scrambles plain text to produce a unique message digest. With a proper algorithm there is no way to reverse the hash. If a hashed password is taken, the password must be guessed.
+- Encryption is a two way function, what is encrypted can be decrypted with the proper key. Either Symmetric and Asymmetric. Email, Data Storage, web traffic most common uses.
+- Hashing is a one way function that scrambles plain text to produce a unique message digest. With a proper algorithm there is no way to reverse the hash. If a hashed password is taken, the password must be guessed. Hashing provides integrity. If the hashes don't match when checked the file has been modified.
+
+### Common Encryption and Hashing Algorithms
+- Sym Encryption: DES/3DES, AES, RC4, RC5
+- Asym Encryption: RSA, ECC
+- Hashing: MD5, SHA-1/2, NTLM, LANMAN
 
 ### What are some of the biggest security vulnerabilities of 2019?
 - Dominant category was Injection. A large percentage was related to Remote Code/Command Execution (RCE). Followed by Cross-Site Scripting (XSS) mainly Reflected.
@@ -413,6 +422,10 @@ with the proper key.
 - Application Security
 
 ### How do you keep up with cyber security?
+- Reddit RSS
+- darkreading
+- krebs on security
+- Security Weekly
 
 ### TCP Three Way Handshake
 1. TCP Client sends SYN to TCP Server (SYN)
@@ -426,10 +439,16 @@ with the proper key.
 - Advanced SIEM systems include user and entity behavior (UEBA), security orchestration, automation and response SOAR
 
 ### Explain SSL Handshake
-
-### Name 5 Common Ports and their services
+1. Client Hello: Client sends info that will be required by the server started an HTTPS connection.
+2. Server Hello: Server responds back with the configuration it selected from the Client Hello with info to proceed with the handshake.
+3. Server Key Exchange Message: Message sent by the server to the client carrying the required details for client to generate the pre-secret. Only used if the premaster secret is needed.
+4. Certificate Request: Server will send a certificate request from the client with the certificate type, cert signature algos and cert authorities list can be empty. Server then sends Server Hello Done message.
+5. Client Certificate: Client presents its cert chain to the server. Cert needs to be appropriate for the negotiated cipher suite's key exchange algo and any negotiated extensions.
+6. Client Key Exchange Message: Message needs to be sent by the client following the client cert message. Data between server and client HTTPS connection will be encrypted. Symmetric is used due to lower overhead
 
 ### Where do you find logs (Linux/Windows)
+- Windows: C: WINDOWS system32
+- Linux: Var Log sub directory
 
 ### If you went into a room and there were two computers there and one was infected with malware, how would you find out which one it was?
 
@@ -437,14 +456,30 @@ with the proper key.
 - Anti Virus and Segmented VLANs
 
 ### Three Types of malware and explain them
+- Virus, Keyloggers, Worms, Trojans, Ransomware / Cryptomalware, Logic Bombs, bot/botnets, adware, spyware, and root kits.
 
 ### What would you do if you had a bot net? How to make money with it?
 
 ### What is a DMZ and what would likely be in it?
+- Demilitarized zone
 
 ### Telnet vs SSH
 
+#### SSH
+1. Secure Shell: Provides strong authentication and secure communication over insecure channels.
+2. Runs on port 22, but can be changed.
+3. Uses public key for authentication of users accessing a server and provides great security.
+4. Used on most popular OS (Unix, Solaris, Red-Hat Linux, CentOS, Ubuntu). Protects
+5. Protects network from attacks such as IP spoofing, DNS spoofing, and IP source routing. Attacker can only force a disconnect, and is unable to replay traffic or highjack the connection.
+6. Entire session is encrypted.
+
+#### Telnet
+1. Not a secure communication protocol because it does not use any security mechanism and transfer data in plain text allowing for sniffing to occur.
+2. No authentication policies and data encryption tech used in telnet/
+
 ### HTTP vs HTTPS
+- HTTP runs on port 80, insecure connection. Layer 7 Protocol. Transfers data over the internet (API, web content)
+- HTTPS uses TLS/SSL to encrypt HTTP. Public key encryption(Asymmetric). Public key shared via SSL Cert. Once connection is established two devices agree on new keys(Session Keys). Everything is encrypted, attacker would only see Cipher Text. Runs on port 443.
 
 ### Subnetting and CIDR Notation
 
@@ -453,3 +488,16 @@ with the proper key.
 ### Powershell
 
 ### Bash
+
+### Risk vs Vuln vs Threat
+- Balance Risk and needs of the business
+
+### Preventative vs Detective
+- IPS in line - capacity issues - single failure point.
+- Detective allows analysis without letting an attacker know you're watching.
+
+### Encryption and Compression 1st?
+- Compress first then encrypt.
+
+### Rest API
+- How two servers talk to each other using Get, Post, Del, Put.
