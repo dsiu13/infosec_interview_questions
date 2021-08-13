@@ -1,5 +1,8 @@
 ## Interview questions for SOC Analyst, Sec Engineering, etc
 
+# Table of Contents
+- [Vulnerabilities](#Vulnerabilities)
+
 ### Tell me about yourself tips
 1. Explain your skills and abilities that will help you excel in the role.
 2. Added value to the company. What would you bring to the company?
@@ -33,7 +36,7 @@
 - Target Phishing is called Spear Phishing
 - Check URLs, don't click links it email, filters for inbox, and employee training.
 
-# Give some examples of web server vulnerabilities and how to prevent them.
+## Vulnerabilities:
 
 #### SQL Injection
 - Structured Query Language (SQL) is used to query, operate, and administer database systems such as Microsoft SQL server, oracle, or mySQL
