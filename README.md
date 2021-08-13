@@ -10,22 +10,26 @@
 - [Ports](#Ports)
 - [Firewalls/IDS/IPS](#Firewalls/IDS/IPS)
 - [Malware](#Malware)
+- [OWASP](#OWASP)
+- [CLI](#CLI)
+- [Breaches](#Breaches)
+- [Misc](#Misc)
 
 ## Non-technical Questions
 
-### Tell me about yourself tips
+#### Tell me about yourself
 1. Explain your skills and abilities that will help you excel in the role.
 2. Added value to the company. What would you bring to the company?
 
-### What are some of the biggest security vulnerabilities of 2019?
+#### What are some of the biggest security vulnerabilities of 2019?
 - Dominant category was Injection. A large percentage was related to Remote Code/Command Execution (RCE). Followed by Cross-Site Scripting (XSS) mainly Reflected.
 - Vulnerabilities in API (App Programming Interface) continues to grow.
 - Increase in third-party components (Word Press Plugins, Jenkins Plugins, and NodeJS packages.
 - DoS (Denial of Service) and CSRF (Cross-Site request forgery) fell out of the OWASP Top 10, but are still common.
 
-### What are some of the biggest security vulnerabilities of 2020?
+#### What are some of the biggest security vulnerabilities of 2020?
 
-### How do you keep up with cyber security?
+#### How do you keep up with cyber security?
 - Reddit RSS
 - darkreading
 - krebs on security
@@ -33,14 +37,13 @@
 - CISO - Cyber Security Headlines
 
 ## Tools/Frameworks:
-
-### Password Crackers: Hydra, John the Ripper
-### Exploit Frameworks: Metasploit, Burp Suite
-### Port Scanners: nmap
+- Passwords: Hydra, John the Ripper
+- Exploitation Frameworks: Metasploit, Burp Suite
+- Port Scanners: nmap
 
 ## DLP:
 
-### Explain in your own words what data leakage is.
+#### Explain in your own words what data leakage is.
 - Data leakage is the unauthorized transmission of data from within an organization to an external destination or recipient.
 - Can mean both physically and electronically. Emails, Web, or USB, or laptops. etc..
 - Also known as low or slow data theft. Major problem in data security.
@@ -53,7 +56,7 @@
 - Protect Intellectual Property (IP)
 - Track data movement on your own endpoints, network, and the cloud.
 
-### List out the high level steps involved in a successful data loss prevention project.
+#### List out the high level steps involved in a successful data loss prevention project.
 1. Prioritize Data: Not all data is equally critical. Determine which data would cause the biggest problem is stolen.
 2. Categorize (Classify) the Data. Simple way to scale is by using context. Source app, data store, user who created. Persistent class tags allow for data tracking
 3. Understand what data is at risk. When is it at it's most vulnerable
@@ -64,7 +67,7 @@
 
 ## Attacks/Vulnerabilities:
 
-#### SQL Injection
+##### SQL Injection
 - Structured Query Language (SQL) is used to query, operate, and administer database systems such as Microsoft SQL server, oracle, or mySQL
 - A SQL injection attack involves the alteration of SQL statements that are used within a web application through the use of attacker-supplied data. Insufficient input validation and improper construction of SQL statements in web applications can expose them to SQL injection attacks.
 - **Blind SQL Injection**: When no info is returned directly to the user or attacker. The attacker determines if an SQL statement was executed.
@@ -84,27 +87,16 @@
 - **Fortifying SQL Statements**: Each of these techniques performs all required escaping of dangerous characters before the SQL statement is passed to the underlying database system.
 - **Defense in Network**: Intrusion Prevention System.
 
-#### Cross-Site Scripting (XSS)
+##### Cross-Site Scripting (XSS) Reflected XSS? Stored XSS?
 - Type of injection attack, where malicious scripts are injected into otherwise benign and trust websites.
 - Attack occurs when an attacker uses a web app to send malicious code. Usually in the form of a browser side script, to a different end user.
 - This script runs because the client believes it comes from a trust source. It can gain access to cookies, session tokens, or any sensitive info
 - Separated into two categories: Stored and Reflected.
-- **Stored attacks** - The attacker injects the website with a malicious script. Each time the website is visited the scripted is executed because the user's browser recognizes it as a trusted source
-- **Reflected** aka Non-persistent attacks occur when when malicious script is reflected off a web app to the victim's browser. Reflect works when incoming requests are not being sufficiently sanitized. This allows for manipulation of a web application's functions and the activation of malicious script. Unlike stored attacks which need a website vulnerability that allows for permanent injections of malicious scripts. Reflected attacks only require the malicious script to be embedded
+- **Stored attacks** - The attacker injects the vulnerable web application with a malicious script. Each time the website is visited the script is executed because the user's browser recognizes it as a trusted source.
+- **Reflected** aka Non-persistent attacks occur when when malicious script is reflected off a web app to the victim's browser. Reflect works when incoming requests are not being sufficiently sanitized. This allows for manipulation of a web application's functions and the activation of malicious script. Unlike stored attacks which need a website vulnerability that allows for permanent injections of malicious scripts. The attack only requires the malicious script to be embedded, and then it can reflect malicious script off a web app onto a user's browser.
 - **Web Application Firewall (WAF)** is the most common solution for XSS and web application attacks. WAF employ different methods to counter attack vectors. In XSS, that would be signature based filtering to identify and block malicious requests.
 - Reflected attacks are more common, reflected attacks do not have the same reach as stored, and reflected attacks can be avoided by vigilant users
 - Reflected attacks are best avoided by vigilant users. The user's request is block in reflected where as in stored it's the websites request.
-
-#### Distributed Denial of Service / Denial of Service (DDoS/DoS)
-- DDoS is distributed denial of service is an attack that involves a series of connected online devices that are used to overwhelm a target website, server or other network with fake traffic.
-- DoS attack does that same thing, but from only one machine.
-- DDoS attacks don't just aim at bypassing the security layer, DDoS main focus is to make your servers and sites unavailable to legitimate users. They can also be used as a "smokescreen" to cover other harmful acts or destroy systems.
-- DDoS is one of the most common forms of attacks.
-- Application layer attack: Exhausts targets resources and disrupts access to the targets service or site. HttP Flood is an example
-- Protocol attack: Aimed at the networking layer to overwhelm the tablespace of the firewall, core networking services, or load balancer that sends requests to the target.
-- Volumetric attack: Uses a botnet to generate huge traffic and jams up the work on the target. DNS amplification is an example of volumetric
-- Their are hosting services who will monitor your VPN, proxies, dns, and data to see any potential DDoS attack.
-- You can also send traffic into the abyss with **Black Hole Routing**
 
 #### Cross-Site Request Forgery (CSRF)
 - Attack that forces an end user to execute unwanted actions on a web app in which they are currently authenticated. An attacker may trick the user of the web app into executing malicious actions of the attacker's choosing.
@@ -118,11 +110,16 @@
 - URL Rewriting: Since the attacker cannot guess the session ID. However, the user's session ID is exposed in the URL
 - HTTPS: does nothing itself to defend against CSRF, but it is a prerequisite measure.
 
-### What is a Cross Site Scripting (XSS) attack? Reflected XSS? Stored XSS?
-- XSS is a type of injection. An attacker must find a vulnerability in a web app and then inject malicious script into it's server via a comment field, etc...
-- Malicious script is injected into trust sites and an attack occurs when an attacker uses a web app to send that malicious code to an end user. This injected browser site script is accepted because it comes from a trust source.
-- Reflected XSS: Reflects malicious script off a web app onto a user's browser.
-- Stored / Persistent: Occurs when malicious script is directly injected into a vulnerable web application.
+#### Distributed Denial of Service / Denial of Service (DDoS/DoS)
+- DDoS is distributed denial of service is an attack that involves a series of connected online devices that are used to overwhelm a target website, server or other network with fake traffic.
+- DoS attack does that same thing, but from only one machine.
+- DDoS attacks don't just aim at bypassing the security layer, DDoS main focus is to make your servers and sites unavailable to legitimate users. They can also be used as a "smokescreen" to cover other harmful acts or destroy systems.
+- DDoS is one of the most common forms of attacks.
+- Application layer attack: Exhausts targets resources and disrupts access to the targets service or site. HttP Flood is an example
+- Protocol attack: Aimed at the networking layer to overwhelm the tablespace of the firewall, core networking services, or load balancer that sends requests to the target.
+- Volumetric attack: Uses a botnet to generate huge traffic and jams up the work on the target. DNS amplification is an example of volumetric
+- Their are hosting services who will monitor your VPN, proxies, dns, and data to see any potential DDoS attack.
+- You can also send traffic into the abyss with **Black Hole Routing**
 
 ## Give examples of an Active Directory Attack
 - Active Directory: A hierarchical structure to store objects, so they can access and manage resources of an enterprise. Resources like users, groups, computers, policies. AD is widely in use.
@@ -167,24 +164,24 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Least Privilege Model, User Training, Endpoint Blocking of mimikatz, etc...
 - Choke point for Domain Controller access, terminal server can only talk to DCs, DCs only accept admin connections from that terminal.
 
-### Social Engineering Attacks
+#### Social Engineering Attacks
 - Phishing: A technique used to obtain personal information, such as a username or password. It collects log in info by creating a fake looking login page for a company.
 - This can be done using phones, texts, robocalls, etc...
 - Target Phishing is called Spear Phishing
 - Prevention by checking URLs, don't click links it email, filters for inbox, and employee training.
 
-### Two types of sniffing attacks?
+#### Two types of sniffing attacks?
 - Active Sniffing: Sniffing in the switch is active sniffing. Looks at the switch and injects traffic into the LAN
 - Passive Sniffing: Sniffing through the hub, it waits for data to be sent and captures it.
 - Active attacks: MAC-Flooding, ARP Spoofing, ARP Poisoning, Man-in-the-Middle
 
-### What is MAC Spoofing?
+#### What is MAC Spoofing?
 - Technique of changing your factory assigned MAC address of a network interface on a networked device.
 - The MAC address on the Network Interface Controller cannot be changed.
 - Drivers allow for MAC address changing.
 - Spoofing allows you to bypass Access Control Lists on servers or routers. Impersonates a MAC address on the whitelist or that is not black listed.
 
-### What is ARP Poisoning? (ARP Flooding)
+#### What is ARP Poisoning? (ARP Flooding)
 - ARP only works with 32-bit IP addresses in the older IPv4 standard. The newer IPv6 protocol uses a different protocol, Neighbor Discovery Protocol (NDP).
 - Man in the Middle attack (MitM)
 1. The attacker must have access to the network. They scan the network to determine the IP addresses of at least two devices⁠.
@@ -201,14 +198,14 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 
 ## DNS:
 
-### Explain how DNS works.
+#### Explain how DNS works.
 - Translates domain names into IP address. Each device has a unique which other machines use to the device.
 - **DNS Recursor**: Server designed to receive queries from client machines through an app. The recursor is then responsible for making additional request for the client's query
 - **Root nameserver**: Root server is the 1st step in translating a human reable host name in an IP address. Serves as a reference to more specific locations.
 - **TLD nameserver**: Top Level Domain Server (TLD), contains the last part of a hostname (.com, .net, etc..)
 - **Authoritative nameserver**: Final nameserver, last stop on the nameserver query. If it has the requested hostname, it will return the IP address to the DNS recursor
 
-#### DNS Server vs recursive DNS resolver
+##### DNS Server vs recursive DNS resolver
 - Recursive resolver is at the beginning of the DNS query and Authoritative is at the end.
 - The recursive resolve responds to recursive request from the client and tracks down the DNS record. It makes a series of request until it reaches the authoratative nameserver with the requested record or timesout.
 - **Caching** is a data persistence process that helps serve the request resource earlier in the DNS lookup.
@@ -238,7 +235,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 2. **Iterative**: The DNS is allowed to return the best answer it can. If the queried DNS server does not have match for the query name, it will return a referral DNS server authoratative for a lower level of domain name space.
 3. **Non-Recursive**: Will occur when a DNS resolver client queries a DNS server for a record that it has access to because it's the authoritative for the record or the record is cached.
 
-#### DNS Caching
+##### DNS Caching
 - **Browser DNS Cache**: Records are cached for a set amount of time. The browser cache is the first place searched for the requested record.
 - **OS level Cache (Stub Resolver/DNS Client)**: 2nd and last local stop before a DNS query leaves your machine. When a request is received, it checks it's own cache for the record, if it is not found a DNS query(Recursive Flag) it sent outside the local network to a DNS recursive resolver inside the ISP
 - **Recursive resolver DNS cache**: Will also check to see if host-to-IP address translation is already in the location persistence layer.
@@ -248,18 +245,18 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 
 ## Encryption/Hashing
 
-### What is the difference between hashing and encryption?
+#### What is the difference between hashing and encryption?
 - Encryption is a two way function, what is encrypted can be decrypted with the proper key. Either Symmetric and Asymmetric. Email, Data Storage, web traffic most common uses.
 - Hashing is a one way function that scrambles plain text to produce a unique message digest. With a proper algorithm there is no way to reverse the hash. If a hashed password is taken, the password must be guessed. Hashing provides integrity. If the hashes don't match when checked the file has been modified.
 
-### Common Encryption and Hashing Algorithms
+#### Common Encryption and Hashing Algorithms
 - Sym Encryption: DES/3DES, AES, RC4, RC5
 - Asym Encryption: RSA, ECC
 - Hashing: MD5, SHA-1/2, NTLM, LANMAN
 
 ## Ports:
 
-### Explain what each of these ports are used for; 80, 22, 443, 53 etc
+#### Explain what each of these ports are used for; 80, 22, 443, 53 etc
 - Port Range: 0-65535, Well Known: 0-1023, Registered: 1024 to 49151, Dynamic: 49152-65535
 - **20 & 21**: file transfer proto. one is data transfer. the other is control channel
 - **22**: SSH, SFTP, SCP - Secure Shell, Secure File Transfer, Secure Copy Protocol. Remote access terminal program
@@ -286,14 +283,13 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 
 ## Firewalls/IDS/IPS:
 
-### Whats Intrusion Detection System (IDS) and Intrusion Prevention System (IPS)?
+#### Whats a Intrusion Detection System (IDS) and Intrusion Prevention System (IPS)?
 - **IDS**: Monitors a network or system for malicious activity or policy violations. Reports to a Security and Event Management System (SIEM).
 - Two common classifications of IDS: **Network Intrusion Detection Systems (NIDS) and Host Based Intrusion Detection Systems (HIDS).**
 - **IPS**: An IDS system that has the ability to respond to detected intrusions.
 - **NIDS**: Placed at a strategic point or points within the network to monitor network traffic to and from all devices on the network. Performs analysis of passing traffic on the entire subnet, and matches the traffic that is passed on subnets to a library of known attacks.
 - **HIDS**: Run on individual hosts or devices on a network. Monitors inbound and outbound packets from the device and will alert user or admin if any suspicious activity is detected. Takes snapshots of existing system files and matches to the previous snapshot. If any changes are detected an alert is sent.
 
-### What is a Firewall, IPS, IDS, and where are they placed on a network?
 #### Firewall
 - Network Security System that monitors and controls incoming and outgoing network traffic based on predetermined security roles.
 - Firewalls: Categorized as network-based or a host-based system. Network-based firewalls can be positioned anywhere within a LAN or WAN.
@@ -312,12 +308,22 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - IDS advanced features would be integrated with a firewall, allowing for interception of more sophisticated attacks entering the network.
 - IDS placement within actual network. These will reveal attacks or suspicious activity within the network. Makes it more difficult to move around within the network.
 
-#### Two intrusion detection methods?
+#### The two intrusion detection methods?
 - Intrusion Detection System (IDS) and Intrusion Prevention System (IPS).
+
+#### Preventative vs Detective
+- IPS in line - capacity issues - single failure point.
+- Detective allows analysis without letting an attacker know you're watching.
+
+#### Honeypot/Honeynet
+- A honeypot is a virtual trap to lure attackers. The intentionally compromised computer captures the exploits/vulnerabilities used, so they can studied to improve security policies.
+- A honeynet is a decoy network made up of one or more honeypots made to look like a real network and contains multiple systems but is hosted on one or only a few servers
 
 ## Networking:
 
-#### What's the difference between (Transfer Control Protocol) TCP and (User Datagram Protocol) UDP?
+#### What happens in the background when the user accesses the web browser etc.
+
+##### What's the difference between (Transfer Control Protocol) TCP and (User Datagram Protocol) UDP?
 - **TCP**: Connection Based. Connection established with a three way handshake. Has QA, can determine if all packets arrived.
 **Three Way Shake**: Client sends a SYN to server. Server sends a SYN/ACK to client. Client responds with an ACK.
 - Step 1 (SYN) : In the first step, client wants to establish a connection with server, so it sends a segment with SYN(Synchronize Sequence Number) which informs server that client is likely to start communication and with what sequence number it starts segments with
@@ -325,26 +331,26 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Step 3 (ACK) : In the final part client acknowledges the response of server and they both establish a reliable connection with which they will start the actual data transfer.
 - **UDP**: No connection needed/connectionless protocol. UDP does not have a mechanism to check for payload corruption. Common uses are for VoIP, Streaming, Online Gaming
 
-### What is TCP?
+#### What is TCP?
 - Transmission Control Protocol: Standard that defines how to establish and maintain a network convo through which an app can exchange data.
 - Connection Oriented Protocol, the connection once established is maintained until ended.
 - Helps organizing data allowing for a secure transmission. SSH, FTP, Telnet, SMTP, POP, IMAP, HTTP make use of TCP.
 - Exists in the transport layer. Ensures error free transmission of data.
 
-### TCP Header Flags?
+#### TCP Header Flags?
 - Flags are used to indicate a particular state of connection or to provide some additional useful info like troubleshooting purposes, or to handle a control of a particular connection.
 - Common flags are, SYN, ACK, and FIN
 - SYN: Synchronization - 1st step of a connection establishment (3 Way Handshake). Only 1st packet from sender and receiver should have this flag set. Used to synchronize sequence number, telling the other end which sequence number they should expect.
 - ACK: Acknowledgement is used to acknowledge packets which are successful received by the host. The flag is set if the acknowledgement number field contains a valid acknowledgement number.
 - FIN: Finish is used to request for connection termination. Last packet sent by sender, and this frees the reserved resources and ends the connection.
 
-### UDP Header Fields?
+#### UDP Header Fields?
 1. Source Port Number - Port of the sending device
 2. Destination Port Number - Port of receiving device
 3. Data Field Length - Number of bytes comprising the UDP header. Limit is determined by the underlying IP protocol used.
 4. Checksum Field - Allows receiving device to verify integrity of the packet header and payload. Optional in IPv4. Required in IPv6.
 
-### TCP Three Way Handshake
+#### TCP Three Way Handshake
 1. TCP Client sends SYN to TCP Server (SYN)
 2. TCP Server receives SYN and sends SYN to Client (SYN/ACK)
 3. Client sends ACK, Server receives (ACK)
@@ -378,27 +384,29 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Layer 3: IPv4, IPv6, ICMP, ICMPv6, IPSec, OSPF, EIGRP
 - Layer 1 to 2: MAC, ARP, Ethernet 802.3(Wired), CDP, LLDP. HDLC, PPP, DSL, L2TP, 802.11(Wireless), SONET/SDH (Fiber Optic)
 
-### What are the three main transmission modes?
+#### Encapsulation/Decapsulation
+
+#### What are the three main transmission modes?
 - Simple, Half Duplex, and Full Duplex
 
-### What are some communication networks?
+#### What are some communication networks?
 - Local Area Network, Metropolitan Area Network, Wide Area Network, and Personal Area Network
 
-### What is Simple Service Discovery Protocol (SSDP)?
+#### What is Simple Service Discovery Protocol (SSDP)?
 - Network Protocol, does not need assistance of server-based configuration mechanisms - Dynamic Host Configuration Protocol (DHCP), or Domain Name Service (DNS), and does not need a special static configuration of a network host.
 - Text-based protocol based on Universal Plug and Play (HTTPU)
 - Uses UDP as the transport protocol. **Services are announced by the hosting system with a multicast address at UDP port number 1900**
 - IPv4 Multicast Address: 239.255.255.250
 - IPv6 Multicast Address: ff0X::c for all scope ranges indicated by X
 
-#### Well Known Practical Multicasts addresses for SSDP.
+##### Well Known Practical Multicasts addresses for SSDP.
 - 239.255.255.250 (IPv4 site-local address)
 - [FF02::C] (IPv6 link-local)
 - [FF05::C] (IPv6 site-local)
 - [FF08::C] (IPv6 organization-local)
 - [FF0E::C] (IPv6 global)
 
-#### What is Simple Network Management Protocol (SNMP)?
+##### What is Simple Network Management Protocol (SNMP)?
 - Collects and organizes info about managed devices on IP networks and modifies that info to change device behavior
 - Used in network management for network monitoring
 - SNMP exposes management data in the form of variables on managed systems organized in a management information base (MIB) which describe the system status and configuration.
@@ -415,15 +423,15 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 1. Connection Services: Provides acknowledgement of receipt of a message, limits amount of data sender can send at one time, preventing overwhelming of receiver, and receiver can notify sender when an error occurs (Checksum, Frame Loss)
 2. Synchronizing Transmissions: **Isochronous**: Network devices use a common reference clock and create time slots for transmission. **Asynchronous**: Network devices reference their own internal clocks and use start/stop bits. **Synchronous**: Network devices agree on clocking method to indicate start and end. Can use Control Characters or separate timing channel.
 
-### What is DHCP?
+#### What is DHCP?
 - Dynamic Host Configuration Protocol: Network management protocol used on IP networks, DHCP dynamically assigns IP address and other network configurations to each device on network.
 - DHCP servers enable computers to request IP addresses and networking parameters from the ISP. Reducing need for manually IP assignment.
 
-### What is a Virtual Local Area Network (VLAN)? Types of VLANs?
+#### What is a Virtual Local Area Network (VLAN)? Types of VLANs?
 - Logically connected devices regardless of their physical locations. Connected by a switch based on their functionalities. Behave as if they are connected to a single network segment.
 - VLAN enhances security between departments and for easy reconfiguration
 
-### Tools used to secure a common network?
+#### Tools used to secure a common network?
 - Access Control List (ACL)
 - Firewall
 - Intrusion Detection Systems, NIDS, NIPS
@@ -438,19 +446,21 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Anti-Malware Software
 - Application Security
 
-### What is a SIEM?
+#### What is a SIEM?
 - System Info Event Manager: An approach to security management that combines Security Information Management (SIM) and Security Event Management Function (SEM).
 - Goal of SIEM system is to aggregate relevant data from multiple sources
 - SIEM can be rules-based or employ a statistical correlation engine to establish relationship between event log entries.
 - Advanced SIEM systems include user and entity behavior (UEBA), security orchestration, automation and response SOAR
 
-### Explain SSL Handshake
+#### Explain the SSL Handshake
 1. Client Hello: Client sends info that will be required by the server started an HTTPS connection.
 2. Server Hello: Server responds back with the configuration it selected from the Client Hello with info to proceed with the handshake.
 3. Server Key Exchange Message: Message sent by the server to the client carrying the required details for client to generate the pre-secret. Only used if the premaster secret is needed.
 4. Certificate Request: Server will send a certificate request from the client with the certificate type, cert signature algos and cert authorities list can be empty. Server then sends Server Hello Done message.
 5. Client Certificate: Client presents its cert chain to the server. Cert needs to be appropriate for the negotiated cipher suite's key exchange algo and any negotiated extensions.
 6. Client Key Exchange Message: Message needs to be sent by the client following the client cert message. Data between server and client HTTPS connection will be encrypted. Symmetric is used due to lower overhead
+
+#### Cookies
 
 #### SSH
 1. Secure Shell: Provides strong authentication and secure communication over insecure channels.
@@ -462,72 +472,71 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 
 #### Telnet
 1. Not a secure communication protocol because it does not use any security mechanism and transfer data in plain text allowing for sniffing to occur.
-2. No authentication policies and data encryption tech used in telnet/
+2. No authentication policies and data encryption tech used in telnet.
 
-### HTTP vs HTTPS
+#### HTTP vs HTTPS
 - HTTP runs on port 80, insecure connection. Layer 7 Protocol. Transfers data over the internet (API, web content)
 - HTTPS uses TLS/SSL to encrypt HTTP. Public key encryption(Asymmetric). Public key shared via SSL Cert. Once connection is established two devices agree on new keys(Session Keys). Everything is encrypted, attacker would only see Cipher Text. Runs on port 443.
 
-### Explain HTTPS and SSL
+#### Explain HTTPS and SSL
 - **Hypertext Transfer Protocol** (HTTP): used for viewing web pages. All info is sent in clear text
 - **Secure Hypertext Transfer Protocol**: Encrypts the data is being retrieved by HTTP
 - **SSL**: Protocol that's used to ensure security on the internet. Uses a public key encryption. SSL Cert is used to authenticate the ID of a website
 
-### Subnetting and Classless Inter-domain Routing/CIDR Notation
-
+#### Subnetting and Classless Inter-domain Routing/CIDR Notation
 
 ## Malware:
 - Virus, Keyloggers, Worms, Trojans, Ransomware / Cryptomalware, Logic Bombs, bot/botnets, adware, spyware, and root kits.
-- ### How to defend against ransomware?
+- #### How to defend against ransomware?
 - Anti Virus and Segmented VLANs
 
+## OWASP
 
-### What would you do if you had a bot net? How to make money with it?
+#### What would you do if you had a bot net? How to make money with it?
 
-### What is a DMZ and what would likely be in it?
+#### What is a DMZ and what would likely be in it?
 - Demilitarized zone
 
+## CLI:
 
-### Basic Linux commands
+#### Basic Linux commands
 
-### Powershell
+#### Powershell
 
-### Bash
+#### Bash
 
-### Risk vs Vuln vs Threat
-- Balance Risk and needs of the business
-
-### Preventative vs Detective
-- IPS in line - capacity issues - single failure point.
-- Detective allows analysis without letting an attacker know you're watching.
-
-### Encryption and Compression 1st?
-- Compress first then encrypt.
-
-### Rest API
-- How two servers talk to each other using Get, Post, Del, Put.
+## Breaches:
 
 ## Misc:
 
-### How does an antivirus program work?
+#### How does an antivirus program work?
 - Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
 
-### What is a Zero Day?
+#### What is a Zero Day?
 - An exploit that exposes a vulnerability in software or hardware before the developer can patch it.
 - The attacker uses the vulnerability and exploits the flaw, after the exploit is released and noticed a patch is applied to address the flaw.
 
-### What is a MAC Address?
+#### What is a MAC Address?
 - Media Access Control is a unique identifier assigned to a Network Interface Controller (NIC) for use as a network address for communication.
 
-### What is Data Center Multi-Tier Model Design?
+#### What is Data Center Multi-Tier Model Design?
 - Levels of reliability of data centers
 - Tier 1: Lacks redundant IT equipment, 99.671% Avail, 1729 min annual downtime max. If the power goes, it all goes.
 - Tier 2: Adds redundant infrastructure, 99.741% Avail, 1361 min annual downtime max. Does have a backup gen
 - Tier 3: Has concurrent availability means one can go down and still function. One Adds more data paths. Duplicate equipment, dual powered. 95 mins annual downtime. Lower redundancy level while components are out.
 - Tier 4: Dual-powered cooling, fault tolerance, 99.995%, 26 min of annual downtime. You can lose any component and still have fault resilience. Essentially two Tier 3s
 
-### Where do you find logs (Linux/Windows)
+#### Where do you find logs (Linux/Windows)
 - Windows: C: WINDOWS system32
 - Linux: Var Log sub directory
 
-### If you went into a room and there were two computers there and one was infected with malware, how would you find out which one it was?
+#### If you went into a room and there were two computers there and one was infected with malware, how would you find out which one it was?
+
+#### Encryption and Compression 1st?
+- Compress first then encrypt.
+
+#### Rest API
+- How two servers talk to each other using Get, Post, Del, Put.
+
+#### Risk vs Vuln vs Threat
+- Balance Risk and needs of the business
