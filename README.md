@@ -243,7 +243,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - If there is no NS record, a query is sent to TLD, skipping the root server
 - If there a no records pointing to a TLD server, it will then query the root servers. Typically occurs after DNS cache purge
 
-## Encryption/Hashing
+## Encryption/Hashing:
 
 #### What is the difference between hashing and encryption?
 - Encryption is a two way function, what is encrypted can be decrypted with the proper key. Either Symmetric and Asymmetric. Email, Data Storage, web traffic most common uses.
