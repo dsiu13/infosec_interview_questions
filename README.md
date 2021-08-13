@@ -1,12 +1,44 @@
 ## Interview questions for SOC Analyst, Sec Engineering, etc
 
 # Table of Contents
-- [Vulnerabilities](#Vulnerabilities)
+- [Tools/Frameworks](#Tools/Frameworks)
+- [DLP](#DLP)
+- [Attacks/Vulnerabilities](#Attacks/Vulnerabilities)
+- [DNS](#DNS)
+- [Networking](#Networking)
+- [Encryption/Hashing](#Encryption/Hashing)
+- [Ports](#Ports)
+- [Firewalls/IDS/IPS](#Firewalls/IDS/IPS)
+- [Malware](#Malware)
+
+## Non-technical Questions
 
 ### Tell me about yourself tips
 1. Explain your skills and abilities that will help you excel in the role.
 2. Added value to the company. What would you bring to the company?
-3.
+
+### What are some of the biggest security vulnerabilities of 2019?
+- Dominant category was Injection. A large percentage was related to Remote Code/Command Execution (RCE). Followed by Cross-Site Scripting (XSS) mainly Reflected.
+- Vulnerabilities in API (App Programming Interface) continues to grow.
+- Increase in third-party components (Word Press Plugins, Jenkins Plugins, and NodeJS packages.
+- DoS (Denial of Service) and CSRF (Cross-Site request forgery) fell out of the OWASP Top 10, but are still common.
+
+### What are some of the biggest security vulnerabilities of 2020?
+
+### How do you keep up with cyber security?
+- Reddit RSS
+- darkreading
+- krebs on security
+- Security Weekly
+- CISO - Cyber Security Headlines
+
+## Tools/Frameworks:
+
+### Password Crackers: Hydra, John the Ripper
+### Exploit Frameworks: Metasploit, Burp Suite
+### Port Scanners: nmap
+
+## DLP:
 
 ### Explain in your own words what data leakage is.
 - Data leakage is the unauthorized transmission of data from within an organization to an external destination or recipient.
@@ -30,13 +62,7 @@
 6. Employee Training
 7. Repeat with an expanded data set or data id and classification to enable more fine-tuned data controls.
 
-### Explain phishing and how it can be prevented.
-- A technique used to obtain personal information, such as a username or password. It collects log in info by creating a fake looking login page for a company.
-- This can be done over the phone aka vishing
-- Target Phishing is called Spear Phishing
-- Check URLs, don't click links it email, filters for inbox, and employee training.
-
-## Vulnerabilities:
+## Attacks/Vulnerabilities:
 
 #### SQL Injection
 - Structured Query Language (SQL) is used to query, operate, and administer database systems such as Microsoft SQL server, oracle, or mySQL
@@ -92,6 +118,12 @@
 - URL Rewriting: Since the attacker cannot guess the session ID. However, the user's session ID is exposed in the URL
 - HTTPS: does nothing itself to defend against CSRF, but it is a prerequisite measure.
 
+### What is a Cross Site Scripting (XSS) attack? Reflected XSS? Stored XSS?
+- XSS is a type of injection. An attacker must find a vulnerability in a web app and then inject malicious script into it's server via a comment field, etc...
+- Malicious script is injected into trust sites and an attack occurs when an attacker uses a web app to send that malicious code to an end user. This injected browser site script is accepted because it comes from a trust source.
+- Reflected XSS: Reflects malicious script off a web app onto a user's browser.
+- Stored / Persistent: Occurs when malicious script is directly injected into a vulnerable web application.
+
 ## Give examples of an Active Directory Attack
 - Active Directory: A hierarchical structure to store objects, so they can access and manage resources of an enterprise. Resources like users, groups, computers, policies. AD is widely in use.
 - Active Directories rely on different technologies to provide features, LDAP and DNS.
@@ -127,13 +159,47 @@
 Location of high profile assets such as file servers, sql dbs, Active Directory Domain Controllers
 
 #### DC Sync
-- Attacker compromises an account with the rights to perform domain replication. Once proper privileges are obtained, the attacker DCSync command to retrieve account password hashes from Active Direct. The attacker can now create forged Kerberos tickets and access any linked resources.
+- Attacker compromises an account with the rights to perform domain replication. Once proper privileges are obtained, the attacker DCSync command to retrieve account password hashes from Active Direct. The attacker can now create a forged Kerberos tickets and access any linked resources.
 
 #### Kerberos Golden Ticket
 - Golden Ticket is the kerberos auth token for the KRBTGT account, a special hidden account responsible for encryption all the auth tokens for the Domain Controller
 - The ticket is used for a pass the hash attack allowing the attacker to move through the network
 - Least Privilege Model, User Training, Endpoint Blocking of mimikatz, etc...
 - Choke point for Domain Controller access, terminal server can only talk to DCs, DCs only accept admin connections from that terminal.
+
+### Social Engineering Attacks
+- Phishing: A technique used to obtain personal information, such as a username or password. It collects log in info by creating a fake looking login page for a company.
+- This can be done using phones, texts, robocalls, etc...
+- Target Phishing is called Spear Phishing
+- Prevention by checking URLs, don't click links it email, filters for inbox, and employee training.
+
+### Two types of sniffing attacks?
+- Active Sniffing: Sniffing in the switch is active sniffing. Looks at the switch and injects traffic into the LAN
+- Passive Sniffing: Sniffing through the hub, it waits for data to be sent and captures it.
+- Active attacks: MAC-Flooding, ARP Spoofing, ARP Poisoning, Man-in-the-Middle
+
+### What is MAC Spoofing?
+- Technique of changing your factory assigned MAC address of a network interface on a networked device.
+- The MAC address on the Network Interface Controller cannot be changed.
+- Drivers allow for MAC address changing.
+- Spoofing allows you to bypass Access Control Lists on servers or routers. Impersonates a MAC address on the whitelist or that is not black listed.
+
+### What is ARP Poisoning? (ARP Flooding)
+- ARP only works with 32-bit IP addresses in the older IPv4 standard. The newer IPv6 protocol uses a different protocol, Neighbor Discovery Protocol (NDP).
+- Man in the Middle attack (MitM)
+1. The attacker must have access to the network. They scan the network to determine the IP addresses of at least two devices⁠.
+2. The attacker uses a spoofing tool(Arpspoof or Driftnet), to send out forged ARP responses.
+3. The forged responses advertise that the correct MAC address for both IP addresses, belonging to the the devices, but is the attacker’s MAC address. This fools both router and workstation to connect to the attacker’s machine instead.
+4. The two devices update their ARP cache entries and from that point onwards, communicate with the attacker instead of directly with each other.
+5. The attacker is now secretly in the middle of all communications.
+- The attacker can now continue routing the communications to steal unencrypted data.
+- Perform session hijacking (Session ID required), allowing access to accounts the user is logged in to.
+- Alter communication and send the User to a malicious site or file
+- Attacker can give the MAC address of a server they wish to attack with a DDoS. Target server gets flooded with traffic.
+- You can detect ARP Cache Poisoning Attack using Windows/Linux Command "arp - a". If two address have the same MAC Address then a poisoning attack is happening.
+- Preventions Methods: VPN, Static ARP, Packet Filtering, and run tests to detect any vulnerabilities.
+
+## DNS:
 
 ### Explain how DNS works.
 - Translates domain names into IP address. Each device has a unique which other machines use to the device.
@@ -180,6 +246,8 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - If there is no NS record, a query is sent to TLD, skipping the root server
 - If there a no records pointing to a TLD server, it will then query the root servers. Typically occurs after DNS cache purge
 
+## Encryption/Hashing
+
 ### What is the difference between hashing and encryption?
 - Encryption is a two way function, what is encrypted can be decrypted with the proper key. Either Symmetric and Asymmetric. Email, Data Storage, web traffic most common uses.
 - Hashing is a one way function that scrambles plain text to produce a unique message digest. With a proper algorithm there is no way to reverse the hash. If a hashed password is taken, the password must be guessed. Hashing provides integrity. If the hashes don't match when checked the file has been modified.
@@ -189,18 +257,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Asym Encryption: RSA, ECC
 - Hashing: MD5, SHA-1/2, NTLM, LANMAN
 
-### What are some of the biggest security vulnerabilities of 2019?
-- Dominant category was Injection. A large percentage was related to Remote Code/Command Execution (RCE). Followed by Cross-Site Scripting (XSS) mainly Reflected.
-- Vulnerabilities in API (App Programming Interface) continues to grow.
-- Increase in third-party components (Word Press Plugins, Jenkins Plugins, and NodeJS packages.
-- DoS (Denial of Service) and CSRF (Cross-Site request forgery) fell out of the OWASP Top 10, but are still common.
-
-### What are some of the biggest security vulnerabilities of 2020?
-
-### Explain HTTPS and SSL
-- **Hypertext Transfer Protocol** (HTTP): used for viewing web pages. All info is sent in clear text
-- **Secure Hypertext Transfer Protocol**: Encrypts the data is being retrieved by HTTP
-- **SSL**: Protocol that's used to ensure security on the internet. Uses a public key encryption. SSL Cert is used to authenticate the ID of a website
+## Ports:
 
 ### Explain what each of these ports are used for; 80, 22, 443, 53 etc
 - Port Range: 0-65535, Well Known: 0-1023, Registered: 1024 to 49151, Dynamic: 49152-65535
@@ -227,13 +284,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - **5900**: vnc
 - **8080**: http-proxy
 
-### What's the difference between (Transfer Control Protocol) TCP and (User Datagram Protocol) UDP?
-- **TCP**: Connection Based. Connection established with a three way handshake. Has QA, can determine if all packets arrived.
-**Three Way Shake**: Client sends a SYN to server. Server sends a SYN/ACK to client. Client responds with an ACK.
-- Step 1 (SYN) : In the first step, client wants to establish a connection with server, so it sends a segment with SYN(Synchronize Sequence Number) which informs server that client is likely to start communication and with what sequence number it starts segments with
-- Step 2 (SYN + ACK): Server responds to the client request with SYN-ACK signal bits set. Acknowledgement(ACK) signifies the response of segment it received and SYN signifies with what sequence number it is likely to start the segments with
-- Step 3 (ACK) : In the final part client acknowledges the response of server and they both establish a reliable connection with which they will start the actual data transfer.
-- **UDP**: No connection needed/connectionless protocol. UDP does not have a mechanism to check for payload corruption. Common uses are for VoIP, Streaming, Online Gaming
+## Firewalls/IDS/IPS:
 
 ### Whats Intrusion Detection System (IDS) and Intrusion Prevention System (IPS)?
 - **IDS**: Monitors a network or system for malicious activity or policy violations. Reports to a Security and Event Management System (SIEM).
@@ -261,21 +312,42 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - IDS advanced features would be integrated with a firewall, allowing for interception of more sophisticated attacks entering the network.
 - IDS placement within actual network. These will reveal attacks or suspicious activity within the network. Makes it more difficult to move around within the network.
 
+#### Two intrusion detection methods?
+- Intrusion Detection System (IDS) and Intrusion Prevention System (IPS).
 
-### What is a Cross Site Scripting (XSS) attack? Reflected XSS? Stored XSS?
-- XSS is a type of injection. An attacker must find a vulnerability in a web app and then inject malicious script into it's server via a comment field, etc...
-- Malicious script is injected into trust sites and an attack occurs when an attacker uses a web app to send that malicious code to an end user. This injected browser site script is accepted because it comes from a trust source.
-- Reflected XSS: Reflects malicious script off a web app onto a user's browser.
-- Stored / Persistent: Occurs when malicious script is directly injected into a vulnerable web application.
+## Networking:
 
-### How does an antivirus program work?
-- Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
+#### What's the difference between (Transfer Control Protocol) TCP and (User Datagram Protocol) UDP?
+- **TCP**: Connection Based. Connection established with a three way handshake. Has QA, can determine if all packets arrived.
+**Three Way Shake**: Client sends a SYN to server. Server sends a SYN/ACK to client. Client responds with an ACK.
+- Step 1 (SYN) : In the first step, client wants to establish a connection with server, so it sends a segment with SYN(Synchronize Sequence Number) which informs server that client is likely to start communication and with what sequence number it starts segments with
+- Step 2 (SYN + ACK): Server responds to the client request with SYN-ACK signal bits set. Acknowledgement(ACK) signifies the response of segment it received and SYN signifies with what sequence number it is likely to start the segments with
+- Step 3 (ACK) : In the final part client acknowledges the response of server and they both establish a reliable connection with which they will start the actual data transfer.
+- **UDP**: No connection needed/connectionless protocol. UDP does not have a mechanism to check for payload corruption. Common uses are for VoIP, Streaming, Online Gaming
 
-### What is a Zero Day?
-- An exploit that exposes a vulnerability in software or hardware before the developer can patch it.
-- The attacker uses the vulnerability and exploits the flaw, after the exploit is released and noticed a patch is applied to address the flaw.
+### What is TCP?
+- Transmission Control Protocol: Standard that defines how to establish and maintain a network convo through which an app can exchange data.
+- Connection Oriented Protocol, the connection once established is maintained until ended.
+- Helps organizing data allowing for a secure transmission. SSH, FTP, Telnet, SMTP, POP, IMAP, HTTP make use of TCP.
+- Exists in the transport layer. Ensures error free transmission of data.
 
-## What happens in the background when the user accesses the web browser etc.
+### TCP Header Flags?
+- Flags are used to indicate a particular state of connection or to provide some additional useful info like troubleshooting purposes, or to handle a control of a particular connection.
+- Common flags are, SYN, ACK, and FIN
+- SYN: Synchronization - 1st step of a connection establishment (3 Way Handshake). Only 1st packet from sender and receiver should have this flag set. Used to synchronize sequence number, telling the other end which sequence number they should expect.
+- ACK: Acknowledgement is used to acknowledge packets which are successful received by the host. The flag is set if the acknowledgement number field contains a valid acknowledgement number.
+- FIN: Finish is used to request for connection termination. Last packet sent by sender, and this frees the reserved resources and ends the connection.
+
+### UDP Header Fields?
+1. Source Port Number - Port of the sending device
+2. Destination Port Number - Port of receiving device
+3. Data Field Length - Number of bytes comprising the UDP header. Limit is determined by the underlying IP protocol used.
+4. Checksum Field - Allows receiving device to verify integrity of the packet header and payload. Optional in IPv4. Required in IPv6.
+
+### TCP Three Way Handshake
+1. TCP Client sends SYN to TCP Server (SYN)
+2. TCP Server receives SYN and sends SYN to Client (SYN/ACK)
+3. Client sends ACK, Server receives (ACK)
 
 #### OSI Model "Theory" - "Please do not throw sausage pizza away"
 - Going from Layer 1 to Layer 7 is Encapsulation. Returning from Layer 7 to Layer 1.
@@ -312,26 +384,6 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 ### What are some communication networks?
 - Local Area Network, Metropolitan Area Network, Wide Area Network, and Personal Area Network
 
-### What is Data Center Multi-Tier Model Design?
-- Levels of reliability of data centers
-- Tier 1: Lacks redundant IT equipment, 99.671% Avail, 1729 min annual downtime max. If the power goes, it all goes.
-- Tier 2: Adds redundant infrastructure, 99.741% Avail, 1361 min annual downtime max. Does have a backup gen
-- Tier 3: Has concurrent availability means one can go down and still function. One Adds more data paths. Duplicate equipment, dual powered. 95 mins annual downtime. Lower redundancy level while components are out.
-- Tier 4: Dual-powered cooling, fault tolerance, 99.995%, 26 min of annual downtime. You can lose any component and still have fault resilience. Essentially two Tier 3s
-
-### What is TCP?
-- Transmission Control Protocol: Standard that defines how to establish and maintain a network convo through which an app can exchange data.
-- Connection Oriented Protocol, the connection once established is maintained until ended.
-- Helps organizing data allowing for a secure transmission. SSH, FTP, Telnet, SMTP, POP, IMAP, HTTP make use of TCP.
-- Exists in the transport layer. Ensures error free transmission of data.
-
-### TCP Header Flags?
-- Flags are used to indicate a particular state of connection or to provide some additional useful info like troubleshooting purposes, or to handle a control of a particular connection.
-- Common flags are, SYN, ACK, and FIN
-- SYN: Synchronization - 1st step of a connection establishment (3 Way Handshake). Only 1st packet from sender and receiver should have this flag set. Used to synchronize sequence number, telling the other end which sequence number they should expect.
-- ACK: Acknowledgement is used to acknowledge packets which are successful received by the host. The flag is set if the acknowledgement number field contains a valid acknowledgement number.
-- FIN: Finish is used to request for connection termination. Last packet sent by sender, and this frees the reserved resources and ends the connection.
-
 ### What is Simple Service Discovery Protocol (SSDP)?
 - Network Protocol, does not need assistance of server-based configuration mechanisms - Dynamic Host Configuration Protocol (DHCP), or Domain Name Service (DNS), and does not need a special static configuration of a network host.
 - Text-based protocol based on Universal Plug and Play (HTTPU)
@@ -346,16 +398,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - [FF08::C] (IPv6 organization-local)
 - [FF0E::C] (IPv6 global)
 
-### UDP Header Fields?
-1. Source Port Number - Port of the sending device
-2. Destination Port Number - Port of receiving device
-3. Data Field Length - Number of bytes comprising the UDP header. Limit is determined by the underlying IP protocol used.
-4. Checksum Field - Allows receiving device to verify integrity of the packet header and payload. Optional in IPv4. Required in IPv6.
-
-### Two intrusion detection methods?
-- Intrusion Detection System (IDS) and Intrusion Prevention System (IPS).
-
-### What is Simple Network Management Protocol (SNMP)?
+#### What is Simple Network Management Protocol (SNMP)?
 - Collects and organizes info about managed devices on IP networks and modifies that info to change device behavior
 - Used in network management for network monitoring
 - SNMP exposes management data in the form of variables on managed systems organized in a management information base (MIB) which describe the system status and configuration.
@@ -367,39 +410,10 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - When Agents send back the Manager receives it on port 162
 - Port 10161 is used when Transport Layer Security or Datagram Transport Layer Security.
 
-### Two types of sniffing attacks?
-- Active Sniffing: Sniffing in the switch is active sniffing. Looks at the switch and injects traffic into the LAN
-- Passive Sniffing: Sniffing through the hub, it waits for data to be sent and captures it.
-- Active attacks: MAC-Flooding, ARP Spoofing, ARP Poisoning, Man-in-the-Middle
-
-### What is MAC Spoofing?
-- Technique of changing your factory assigned MAC address of a network interface on a networked device.
-- The MAC address on the Network Interface Controller cannot be changed.
-- Drivers allow for MAC address changing.
-- Spoofing allows you to bypass Access Control Lists on servers or routers. Impersonates a MAC address on the whitelist or that is not black listed.
-
-### What is ARP Poisoning? (ARP Flooding)
-- ARP only works with 32-bit IP addresses in the older IPv4 standard. The newer IPv6 protocol uses a different protocol, Neighbor Discovery Protocol (NDP).
-- Man in the Middle attack (MitM)
-1. The attacker must have access to the network. They scan the network to determine the IP addresses of at least two devices⁠.
-2. The attacker uses a spoofing tool(Arpspoof or Driftnet), to send out forged ARP responses.
-3. The forged responses advertise that the correct MAC address for both IP addresses, belonging to the the devices, but is the attacker’s MAC address. This fools both router and workstation to connect to the attacker’s machine instead.
-4. The two devices update their ARP cache entries and from that point onwards, communicate with the attacker instead of directly with each other.
-5. The attacker is now secretly in the middle of all communications.
-- The attacker can now continue routing the communications to steal unencrypted data.
-- Perform session hijacking (Session ID required), allowing access to accounts the user is logged in to.
-- Alter communication and send the User to a malicious site or file
-- Attacker can give the MAC address of a server they wish to attack with a DDoS. Target server gets flooded with traffic.
-- You can detect ARP Cache Poisoning Attack using Windows/Linux Command "arp - a". If two address have the same MAC Address then a poisoning attack is happening.
-- Preventions Methods: VPN, Static ARP, Packet Filtering, and run tests to detect any vulnerabilities.
-
-### Three Main Data transmission methods in Layer 2 (Data Link)
+#### Three Main Data transmission methods in Layer 2 (Data Link)
 - Logical Link Control (LLC)
 1. Connection Services: Provides acknowledgement of receipt of a message, limits amount of data sender can send at one time, preventing overwhelming of receiver, and receiver can notify sender when an error occurs (Checksum, Frame Loss)
 2. Synchronizing Transmissions: **Isochronous**: Network devices use a common reference clock and create time slots for transmission. **Asynchronous**: Network devices reference their own internal clocks and use start/stop bits. **Synchronous**: Network devices agree on clocking method to indicate start and end. Can use Control Characters or separate timing channel.
-
-### What is a MAC Address?
-- Media Access Control is a unique identifier assigned to a Network Interface Controller (NIC) for use as a network address for communication.
 
 ### What is DHCP?
 - Dynamic Host Configuration Protocol: Network management protocol used on IP networks, DHCP dynamically assigns IP address and other network configurations to each device on network.
@@ -408,9 +422,6 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 ### What is a Virtual Local Area Network (VLAN)? Types of VLANs?
 - Logically connected devices regardless of their physical locations. Connected by a switch based on their functionalities. Behave as if they are connected to a single network segment.
 - VLAN enhances security between departments and for easy reconfiguration
-
-### Port 22 on Linux?
-- Secure Shell (SSH)
 
 ### Tools used to secure a common network?
 - Access Control List (ACL)
@@ -427,18 +438,6 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Anti-Malware Software
 - Application Security
 
-### How do you keep up with cyber security?
-- Reddit RSS
-- darkreading
-- krebs on security
-- Security Weekly
-- CISO - Cyber Security Headlines
-
-### TCP Three Way Handshake
-1. TCP Client sends SYN to TCP Server (SYN)
-2. TCP Server receives SYN and sends SYN to Client (SYN/ACK)
-3. Client sends ACK, Server receives (ACK)
-
 ### What is a SIEM?
 - System Info Event Manager: An approach to security management that combines Security Information Management (SIM) and Security Event Management Function (SEM).
 - Goal of SIEM system is to aggregate relevant data from multiple sources
@@ -452,25 +451,6 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 4. Certificate Request: Server will send a certificate request from the client with the certificate type, cert signature algos and cert authorities list can be empty. Server then sends Server Hello Done message.
 5. Client Certificate: Client presents its cert chain to the server. Cert needs to be appropriate for the negotiated cipher suite's key exchange algo and any negotiated extensions.
 6. Client Key Exchange Message: Message needs to be sent by the client following the client cert message. Data between server and client HTTPS connection will be encrypted. Symmetric is used due to lower overhead
-
-### Where do you find logs (Linux/Windows)
-- Windows: C: WINDOWS system32
-- Linux: Var Log sub directory
-
-### If you went into a room and there were two computers there and one was infected with malware, how would you find out which one it was?
-
-### How to defend against ransomware?
-- Anti Virus and Segmented VLANs
-
-### Three Types of malware and explain them
-- Virus, Keyloggers, Worms, Trojans, Ransomware / Cryptomalware, Logic Bombs, bot/botnets, adware, spyware, and root kits.
-
-### What would you do if you had a bot net? How to make money with it?
-
-### What is a DMZ and what would likely be in it?
-- Demilitarized zone
-
-### Telnet vs SSH
 
 #### SSH
 1. Secure Shell: Provides strong authentication and secure communication over insecure channels.
@@ -488,7 +468,24 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - HTTP runs on port 80, insecure connection. Layer 7 Protocol. Transfers data over the internet (API, web content)
 - HTTPS uses TLS/SSL to encrypt HTTP. Public key encryption(Asymmetric). Public key shared via SSL Cert. Once connection is established two devices agree on new keys(Session Keys). Everything is encrypted, attacker would only see Cipher Text. Runs on port 443.
 
+### Explain HTTPS and SSL
+- **Hypertext Transfer Protocol** (HTTP): used for viewing web pages. All info is sent in clear text
+- **Secure Hypertext Transfer Protocol**: Encrypts the data is being retrieved by HTTP
+- **SSL**: Protocol that's used to ensure security on the internet. Uses a public key encryption. SSL Cert is used to authenticate the ID of a website
+
 ### Subnetting and Classless Inter-domain Routing/CIDR Notation
+
+
+## Malware:
+- Virus, Keyloggers, Worms, Trojans, Ransomware / Cryptomalware, Logic Bombs, bot/botnets, adware, spyware, and root kits.
+- ### How to defend against ransomware?
+- Anti Virus and Segmented VLANs
+
+
+### What would you do if you had a bot net? How to make money with it?
+
+### What is a DMZ and what would likely be in it?
+- Demilitarized zone
 
 
 ### Basic Linux commands
@@ -509,3 +506,28 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 
 ### Rest API
 - How two servers talk to each other using Get, Post, Del, Put.
+
+## Misc:
+
+### How does an antivirus program work?
+- Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
+
+### What is a Zero Day?
+- An exploit that exposes a vulnerability in software or hardware before the developer can patch it.
+- The attacker uses the vulnerability and exploits the flaw, after the exploit is released and noticed a patch is applied to address the flaw.
+
+### What is a MAC Address?
+- Media Access Control is a unique identifier assigned to a Network Interface Controller (NIC) for use as a network address for communication.
+
+### What is Data Center Multi-Tier Model Design?
+- Levels of reliability of data centers
+- Tier 1: Lacks redundant IT equipment, 99.671% Avail, 1729 min annual downtime max. If the power goes, it all goes.
+- Tier 2: Adds redundant infrastructure, 99.741% Avail, 1361 min annual downtime max. Does have a backup gen
+- Tier 3: Has concurrent availability means one can go down and still function. One Adds more data paths. Duplicate equipment, dual powered. 95 mins annual downtime. Lower redundancy level while components are out.
+- Tier 4: Dual-powered cooling, fault tolerance, 99.995%, 26 min of annual downtime. You can lose any component and still have fault resilience. Essentially two Tier 3s
+
+### Where do you find logs (Linux/Windows)
+- Windows: C: WINDOWS system32
+- Linux: Var Log sub directory
+
+### If you went into a room and there were two computers there and one was infected with malware, how would you find out which one it was?
