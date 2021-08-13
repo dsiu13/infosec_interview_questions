@@ -2,7 +2,7 @@
 
 ### Tell me about yourself tips
 1. Explain your skills and abilities that will help you excel in the role.
-2. Added value to the company
+2. Added value to the company. What would you bring to the company?
 3.
 
 ### Explain in your own words what data leakage is.
@@ -136,7 +136,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Translates domain names into IP address. Each device has a unique which other machines use to the device.
 - **DNS Recursor**: Server designed to receive queries from client machines through an app. The recursor is then responsible for making additional request for the client's query
 - **Root nameserver**: Root server is the 1st step in translating a human reable host name in an IP address. Serves as a reference to more specific locations.
-- **TLD nameserver**: Top Level Domain Server (TLD), it contains the last part of a hostname (.com, .net, etc..)
+- **TLD nameserver**: Top Level Domain Server (TLD), contains the last part of a hostname (.com, .net, etc..)
 - **Authoritative nameserver**: Final nameserver, last stop on the nameserver query. If it has the requested hostname, it will return the IP address to the DNS recursor
 
 #### DNS Server vs recursive DNS resolver
@@ -153,7 +153,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 4. Resolver makes a request to that TLD
 5. TLD responds with the IP address of the domain's nameserver
 6. Recursive resolver then sends a query to the domain's nameserver
-7. IP address is return to the resolver from nameserver
+7. IP address returns to the resolver from nameserver
 8. DNS resolver provides the requested IP address of the domain name
 9. Browser sends HTTP request to the returned IP
 10. IP server returns the webpage for render.
@@ -192,6 +192,8 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Increase in third-party components (Word Press Plugins, Jenkins Plugins, and NodeJS packages.
 - DoS (Denial of Service) and CSRF (Cross-Site request forgery) fell out of the OWASP Top 10, but are still common.
 
+### What are some of the biggest security vulnerabilities of 2020?
+
 ### Explain HTTPS and SSL
 - **Hypertext Transfer Protocol** (HTTP): used for viewing web pages. All info is sent in clear text
 - **Secure Hypertext Transfer Protocol**: Encrypts the data is being retrieved by HTTP
@@ -223,12 +225,12 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - **8080**: http-proxy
 
 ### What's the difference between (Transfer Control Protocol) TCP and (User Datagram Protocol) UDP?
-- **TCP**: Connection established with a three way handshake. Has QA, can determine if all packets arrived.
+- **TCP**: Connection Based. Connection established with a three way handshake. Has QA, can determine if all packets arrived.
 **Three Way Shake**: Client sends a SYN to server. Server sends a SYN/ACK to client. Client responds with an ACK.
 - Step 1 (SYN) : In the first step, client wants to establish a connection with server, so it sends a segment with SYN(Synchronize Sequence Number) which informs server that client is likely to start communication and with what sequence number it starts segments with
 - Step 2 (SYN + ACK): Server responds to the client request with SYN-ACK signal bits set. Acknowledgement(ACK) signifies the response of segment it received and SYN signifies with what sequence number it is likely to start the segments with
-- Step 3 (ACK) : In the final part client acknowledges the response of server and they both establish a reliable connection with which they will start the actual data transfer
-- **UDP**: No connection needed. No QA if something is missed the entire thing needs to be resent.
+- Step 3 (ACK) : In the final part client acknowledges the response of server and they both establish a reliable connection with which they will start the actual data transfer.
+- **UDP**: No connection needed/connectionless protocol. UDP does not have a mechanism to check for payload corruption. Common uses are for VoIP, Streaming, Online Gaming
 
 ### Whats Intrusion Detection System (IDS) and Intrusion Prevention System (IPS)?
 - **IDS**: Monitors a network or system for malicious activity or policy violations. Reports to a Security and Event Management System (SIEM).
@@ -244,12 +246,12 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Software app on general-purpose hardware, hardware app running on special purpose hardware, or a virtual appliance running on a virtual host controlled by a hypervisor.
 - Firewall apps may offer non firewall functionality, such as DHCP or VPN services.
 
-#### Intrusion Prevention System
+#### Intrusion Prevention System - IPS
 - Commonly located behind a firewall to function as another filter for malicious activity. IPS is capable of analyzing and taking automated actions on all network traffic flows.
 - Commonly uses of Signature-based detection and statistical anomaly-based detection.
 - IPS can take actions against threats.
 
-#### Intrusion Detection System
+#### Intrusion Detection System - IDS
 - Monitors network for possible dangerous activity, including malicious acts and security protocol violations. IDS alerts admin, but no further action is taken.
 - Common placement being behind the firewall on the edge of a network. Allows IDS with high visibility of traffic entering your network and will not receive any traffic between users on the network. If resources are available you can place your first IDS at the point of highest visibility of traffic and if able place another at the next highest visibility, this repeats if possible until all network points are covered.
 - An IDS place outside a firewall is to defend against noise from the internet, common attacks: Port scans, Network mappers, etc.
@@ -257,35 +259,36 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - IDS placement within actual network. These will reveal attacks or suspicious activity within the network. Makes it more difficult to move around within the network.
 
 
-### What is a Cross Site Scripting (XSS) attack? Reflect XSS? Stored XSS?
+### What is a Cross Site Scripting (XSS) attack? Reflected XSS? Stored XSS?
 - XSS is a type of injection. An attacker must find a vulnerability in a web app and then inject malicious script into it's server via a comment field, etc...
 - Malicious script is injected into trust sites and an attack occurs when an attacker uses a web app to send that malicious code to an end user. This injected browser site script is accepted because it comes from a trust source.
 - Reflected XSS: Reflects malicious script off a web app onto a user's browser.
 - Stored / Persistent: Occurs when malicious script is directly injected into a vulnerable web application.
 
-### How does antivirus program work?
-- Checks file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
+### How does an antivirus program work?
+- Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
 
-### What is a 0 Day?
+### What is a Zero Day?
 - An exploit that exposes a vulnerability in software or hardware before the developer can patch it.
 - The attacker uses the vulnerability and exploits the flaw, after the exploit is released and noticed a patch is applied to address the flaw.
 
 ## What happens in the background when the user accesses the web browser etc.
 
 #### OSI Model "Theory" - "Please do not throw sausage pizza away"
-7. Application
-6. Presentation (Syntax)
-5. Session
-4. Transport
-3. Network
-2. Data Link
-1. Physical
+- Going from Layer 1 to Layer 7 is Encapsulation. Returning from Layer 7 to Layer 1.
+- Layer 7: Application
+- Layer 6 - Presentation (Syntax)
+- Layer 5 - Session
+- Layer 4 - Transport
+- Layer 3 - Network
+- Layer 2 - Data Link
+- Layer 1 - Physical
 
 #### TCP/IP Model "Practical/Reality" - Internet Suite
-4. Application - Data
-3. Transport - Segments
-2. Network / Internet - Packets or Datagrams
-1. Network Access / Link Layer (Data Link + Physical) - Bits & Frames
+- 4. Application - Data
+- 3. Transport - Segments
+- 2. Network / Internet - Packets or Datagrams
+- 1. Network Access / Link Layer (Data Link + Physical) - Bits & Frames
 
 #### OSI + TCP/IP Devices
 - Layers 5 to 7: Layer 7 Firewall - Can see packets
@@ -311,7 +314,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Tier 1: Lacks redundant IT equipment, 99.671% Avail, 1729 min annual downtime max. If the power goes, it all goes.
 - Tier 2: Adds redundant infrastructure, 99.741% Avail, 1361 min annual downtime max. Does have a backup gen
 - Tier 3: Has concurrent availability means one can go down and still function. One Adds more data paths. Duplicate equipment, dual powered. 95 mins annual downtime. Lower redundancy level while components are out.
-- Tier 4: Dual-powered cooling, fault tolerance, 99.995%, 26 min of annual downtime. You can lose any component and still have fault resilience. Essentially two Tier 3
+- Tier 4: Dual-powered cooling, fault tolerance, 99.995%, 26 min of annual downtime. You can lose any component and still have fault resilience. Essentially two Tier 3s
 
 ### What is TCP?
 - Transmission Control Protocol: Standard that defines how to establish and maintain a network convo through which an app can exchange data.
@@ -426,6 +429,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - darkreading
 - krebs on security
 - Security Weekly
+- CISO - Cyber Security Headlines
 
 ### TCP Three Way Handshake
 1. TCP Client sends SYN to TCP Server (SYN)
@@ -481,7 +485,8 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - HTTP runs on port 80, insecure connection. Layer 7 Protocol. Transfers data over the internet (API, web content)
 - HTTPS uses TLS/SSL to encrypt HTTP. Public key encryption(Asymmetric). Public key shared via SSL Cert. Once connection is established two devices agree on new keys(Session Keys). Everything is encrypted, attacker would only see Cipher Text. Runs on port 443.
 
-### Subnetting and CIDR Notation
+### Subnetting and Classless Inter-domain Routing/CIDR Notation
+
 
 ### Basic Linux commands
 
