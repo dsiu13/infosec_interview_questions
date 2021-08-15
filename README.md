@@ -355,7 +355,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 2. TCP Server receives SYN and sends SYN to Client (SYN/ACK)
 3. Client sends ACK, Server receives (ACK)
 
-#### OSI Model "Theory" - "Please do not throw sausage pizza away"
+#### OSI Model "Theory" - Mnemonic: "Please Do Not Throw Sausage Pizza Away"
 - Going from Layer 1 to Layer 7 is Encapsulation. Returning from Layer 7 to Layer 1.
 - Layer 7: Application
 - Layer 6 - Presentation (Syntax)
@@ -373,10 +373,10 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 
 #### OSI + TCP/IP Devices
 - Layers 5 to 7: Layer 7 Firewall - Can see packets
-- 4. Layer 4 Firewall
-- 3. Router, Multilayer Switch, Wireless Router
-- 2. Switch, Bridge, NIC, Wireless Access Point
-- 1. Hub, NIC, Wireless Access Point
+- Layer 4: Firewall
+- Layer 3: Router, Multilayer Switch, Wireless Router
+- Layer 2: Switch, Bridge, NIC, Wireless Access Point
+- Layer 1: Hub, NIC, Wireless Access Point
 
 #### OSI + TCP/IP Protocols
 - Layers 5 to 7: HTTP, DNS, DHCP, FTP, Telnet, SSH, SMTP, POP, IMAP, NTP, SNMP, TLS/SSL. BGP, RIP, SIP
