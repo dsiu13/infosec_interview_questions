@@ -490,10 +490,6 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - #### How to defend against ransomware?
 - Anti Virus and Segmented VLANs
 
-## OWASP
-
-#### What would you do if you had a bot net? How to make money with it?
-
 #### What is a DMZ and what would likely be in it?
 - Demilitarized zone
 
@@ -508,6 +504,8 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 ## Breaches:
 
 ## Misc:
+
+#### What would you do if you had a bot net? How to make money with it?
 
 #### How does an antivirus program work?
 - Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
