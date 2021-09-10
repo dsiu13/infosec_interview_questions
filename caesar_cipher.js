@@ -12,22 +12,42 @@ let caesarCipher = (message, shiftVal) => {
 
     let cipherArr = []
 
-    for(i = message.length - 1; i >= 0; i--){
 
-      if (message.charCodeAt(i) + shiftVal > 122){
-         let decNum = message.charCodeAt(i) + shiftVal - 122 + 96
+    for(i = 0; i <= message.length - 1; i++) {
+
+         letterDec = message.charCodeAt(i) + shiftVal
+
+      if (letterDec > 122) {
+
+         let decNum = letterDec - 122 + 96
          let numChar = String.fromCharCode(decNum)
          cipherArr.push(numChar)
-      } else {
-         let decNum = message.charCodeAt(i) + shiftVal
+
+      } else if(letterDec < 122 && letterDec > 103) {
+
+         let numChar = String.fromCharCode(letterDec)
+         cipherArr.push(numChar)
+
+      } else if(letterDec > 90) {
+
+         let decNum = letterDec - 90 + 64
          let numChar = String.fromCharCode(decNum)
+         cipherArr.push(numChar)
+
+      } else {
+
+         let numChar = String.fromCharCode(letterDec)
          cipherArr.push(numChar)
       }
+
     }
-    console.log(cipherArr.join(""))
+       console.log(cipherArr.join(""))
+    // return cipherArr.join("")
 };
 
-caesarCipher("zed", 1)
+
+caesarCipher("test", 1)
+
 
 
 
@@ -55,23 +75,24 @@ if (message.charCodeAt(i) + 13 > 122){
 }
 
 
+let caesarCipher = (message, shiftVal) => {
 
-
-
-
-let caesarCipher = (message) => {
+    let cipherArr = []
 
     for(i = message.length - 1; i >= 0; i--){
-
-      if (message.charCodeAt(i) + 1 > 122){
-         console.log((message.charCodeAt(i) + 1 - 122) + 64)
+         letterDec = message.charCodeAt(i) + shiftVal
+      if (letterDec > 122){
+         let decNum = letterDec - 122 + 96
+         let numChar = String.fromCharCode(decNum)
+         cipherArr.push(numChar)
       } else {
-        console.log(message.charCodeAt(i) + 1)
-     // console.log(String.fromCharCode(message.charCodeAt(i)))
+         // let decNum = letterDec
+         let numChar = String.fromCharCode(letterDec)
+         cipherArr.push(numChar)
       }
-
     }
-
+    console.log(cipherArr.join(""))
 };
 
-caesarCipher("zed")
+
+caesarCipher("zed", 1)
