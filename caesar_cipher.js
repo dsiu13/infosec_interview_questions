@@ -4,14 +4,16 @@
 // A = 65
 // Z = 90
 
+//To Do
+// Fix for multiple word strings...
+// Add ability to use a negative shift val
+// handle punctuation and language special chars
+// allow user to pass an array of numbers and convert to letters?
 
-//Shift backwards first?
-//Decrypt function
 
 let caesarCipher = (message, shiftVal) => {
 
     let cipherArr = []
-
 
     for(i = 0; i <= message.length - 1; i++) {
 
@@ -23,7 +25,7 @@ let caesarCipher = (message, shiftVal) => {
          let numChar = String.fromCharCode(decNum)
          cipherArr.push(numChar)
 
-      } else if(letterDec < 122 && letterDec > 103) {
+      } else if(letterDec <= 122 && letterDec > 96) {
 
          let numChar = String.fromCharCode(letterDec)
          cipherArr.push(numChar)
@@ -46,53 +48,43 @@ let caesarCipher = (message, shiftVal) => {
 };
 
 
-caesarCipher("test", 1)
-
-
-
+caesarCipher("e", 1)
 
 ////////////////////////////////////////////////////////////////////////////////
 
+let caesarPlain = (message, shiftVal) => {
 
-//Shift backwards first?
-//Decrypt function
-
-let rotCipher = (message) => {
-
-    for(i = message.length - 1; i >= 0; i--){
-      console.log(message.charCodeAt(i) + 13)
-      // console.log(String.fromCharCode(message.charCodeAt(i)))
-    }
-
-};
-
-//set to start value
-if (message.charCodeAt(i) + 13 > 122){
-   (122 - (message.charCodeAt(i) + 13)) + 97
-
-} else if(message.charCodeAt(i) + 13 < 97){
-
-}
+    let plainrArr = []
 
 
-let caesarCipher = (message, shiftVal) => {
+    for(i = 0; i <= message.length - 1; i++) {
 
-    let cipherArr = []
+         letterDec = message.charCodeAt(i) - shiftVal
 
-    for(i = message.length - 1; i >= 0; i--){
-         letterDec = message.charCodeAt(i) + shiftVal
-      if (letterDec > 122){
+      if (letterDec > 122) {
+
          let decNum = letterDec - 122 + 96
          let numChar = String.fromCharCode(decNum)
-         cipherArr.push(numChar)
-      } else {
-         // let decNum = letterDec
+         plainrArr.push(numChar)
+
+      } else if(letterDec < 122 && letterDec > 100) {
+
          let numChar = String.fromCharCode(letterDec)
-         cipherArr.push(numChar)
+         plainrArr.push(numChar)
+
+      } else if(letterDec > 90) {
+
+         let decNum = letterDec - 90 + 64
+         let numChar = String.fromCharCode(decNum)
+         plainrArr.push(numChar)
+
+      } else {
+
+         let numChar = String.fromCharCode(letterDec)
+         plainrArr.push(numChar)
       }
+
     }
-    console.log(cipherArr.join(""))
+       console.log(plainrArr.join(""))
+    // return plainrArr.join("")
 };
-
-
-caesarCipher("zed", 1)
