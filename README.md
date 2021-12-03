@@ -274,9 +274,9 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - **443**: https
 - **445**: microsoft-ds
 - **993**: imaps
-- **995**: pop3s
+- **995**: pop3s - Post office protocol
 - **1433**: MS SQL. Database platform for data storage and retrieval
-- **1723**: pptp
+- **1723**: pptp - Point-to-Point Tunneling Protocol
 - **3306**: mysql
 - **3389**: Remote Desktop Protocol. Allows remote access to a machine.
 - **5900**: vnc
@@ -386,6 +386,8 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Layer 1 to 2: MAC, ARP, Ethernet 802.3(Wired), CDP, LLDP. HDLC, PPP, DSL, L2TP, 802.11(Wireless), SONET/SDH (Fiber Optic)
 
 #### Encapsulation/Decapsulation
+- **Encapsulation**: Process of adding additional info when data is traveling in OSI or TCP/IP model. The additional information is added on sender side.
+- **Decapsulation**: Process of opening up encapsulated data from packets received over a communication network.
 
 #### What are the three main transmission modes?
 - Simple, Half Duplex, and Full Duplex
@@ -457,11 +459,12 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 1. Client Hello: Client sends info that will be required by the server started an HTTPS connection.
 2. Server Hello: Server responds back with the configuration it selected from the Client Hello with info to proceed with the handshake.
 3. Server Key Exchange Message: Message sent by the server to the client carrying the required details for client to generate the pre-secret. Only used if the premaster secret is needed.
-4. Certificate Request: Server will send a certificate request from the client with the certificate type, cert signature algos and cert authorities list can be empty. Server then sends Server Hello Done message.
+4. Certificate Request: Server will send a certificate request from the client with the certificate type, cert signature algos and cert authorities list can be empty. The Server then sends Server Hello Done message.
 5. Client Certificate: Client presents its cert chain to the server. Cert needs to be appropriate for the negotiated cipher suite's key exchange algo and any negotiated extensions.
 6. Client Key Exchange Message: Message needs to be sent by the client following the client cert message. Data between server and client HTTPS connection will be encrypted. Symmetric is used due to lower overhead
 
 #### Cookies
+- Small files including unique identifiers that web servers send to browsers. These cookies then can be sent back to the server each time your browser requests a new page. Allows a website to remember preferences, settings, etc...
 
 #### SSH
 1. Secure Shell: Provides strong authentication and secure communication over insecure channels.
@@ -492,23 +495,9 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Anti Virus and Segmented VLANs
 
 #### What is a DMZ and what would likely be in it?
-- Demilitarized zone
-
-## CLI:
-
-#### Basic Linux commands
-
-#### Powershell
-
-#### Bash
-
-## Breaches:
-
-## Blockchain:
+- Demilitarized zone: A physical or logical subnetwork that contains and exposes an organization's external-facing services to another network such as the Internet.
 
 ## Misc:
-
-#### What would you do if you had a bot net? How to make money with it?
 
 #### How does an antivirus program work?
 - Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
@@ -523,15 +512,13 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 #### What is Data Center Multi-Tier Model Design?
 - Levels of reliability of data centers
 - Tier 1: Lacks redundant IT equipment, 99.671% Avail, 1729 min annual downtime max. If the power goes, it all goes.
-- Tier 2: Adds redundant infrastructure, 99.741% Avail, 1361 min annual downtime max. Does have a backup gen
+- Tier 2: Adds redundant infrastructure, 99.741% Avail, 1361 min annual downtime max. Does have a backup generator
 - Tier 3: Has concurrent availability means one can go down and still function. One Adds more data paths. Duplicate equipment, dual powered. 95 mins annual downtime. Lower redundancy level while components are out.
 - Tier 4: Dual-powered cooling, fault tolerance, 99.995%, 26 min of annual downtime. You can lose any component and still have fault resilience. Essentially two Tier 3s
 
 #### Where do you find logs (Linux/Windows)
 - Windows: C: WINDOWS system32
 - Linux: Var Log sub directory
-
-#### If you went into a room and there were two computers there and one was infected with malware, how would you find out which one it was?
 
 #### Encryption and Compression 1st?
 - Compress first then encrypt.
