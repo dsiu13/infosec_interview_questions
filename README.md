@@ -89,7 +89,7 @@
 - **Defense in Network**: Intrusion Prevention System.
 
 ##### Cross-Site Scripting (XSS) Reflected XSS? Stored XSS?
-- Type of injection attack, where malicious scripts are injected into otherwise benign and trust websites.
+- Type of injection attack, where malicious scripts are injected into otherwise benign and trusted websites.
 - Attack occurs when an attacker uses a web app to send malicious code. Usually in the form of a browser side script, to a different end user.
 - This script runs because the client believes it comes from a trust source. It can gain access to cookies, session tokens, or any sensitive info
 - Separated into two categories: Stored and Reflected.
