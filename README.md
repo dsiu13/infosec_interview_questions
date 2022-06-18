@@ -489,10 +489,10 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - #### How to defend against ransomware?
 - Anti Virus and Segmented VLANs
 
+## Misc:
+
 #### What is a DMZ and what would likely be in it?
 - Demilitarized zone: A physical or logical subnetwork that contains and exposes an organization's external-facing services to another network such as the Internet.
-
-## Misc:
 
 #### How does an antivirus program work?
 - Checks a file, program, or an app and compares a specific set of code with info stored in it's database. If that code is found in the anti viruses library that is similar or identical, the program knows it is malicious.
