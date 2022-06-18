@@ -12,9 +12,6 @@
 - [Malware](#Malware)
 - [OWASP](#OWASP)
 - [CLI](#CLI)
-- [Breaches](#Breaches)
-- [Blockchain](#Bloackchain)
-- [Misc](#Misc)
 
 ## Non-technical Questions
 
