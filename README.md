@@ -10,8 +10,6 @@
 - [Ports](#Ports)
 - [Firewalls/IDS/IPS](#Firewalls/IDS/IPS)
 - [Malware](#Malware)
-- [OWASP](#OWASP)
-- [CLI](#CLI)
 
 ## Non-technical Questions
 
