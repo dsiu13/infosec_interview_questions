@@ -155,7 +155,7 @@ Location of high profile assets such as file servers, sql dbs, Active Directory 
 - Attacker compromises an account with the rights to perform domain replication. Once proper privileges are obtained, the attacker DCSync command to retrieve account password hashes from Active Direct. The attacker can now create a forged Kerberos tickets and access any linked resources.
 
 #### Kerberos Golden Ticket
-- Golden Ticket is the kerberos auth token for the KRBTGT account, a special hidden account responsible for encryption all the auth tokens for the Domain Controller
+- Golden Ticket is the kerberos auth token for the KRBTGT account, a special hidden account responsible for encrypting all the auth tokens for the Domain Controller
 - The ticket is used for a pass the hash attack allowing the attacker to move through the network
 - Least Privilege Model, User Training, Endpoint Blocking of mimikatz, etc...
 - Choke point for Domain Controller access, terminal server can only talk to DCs, DCs only accept admin connections from that terminal.
