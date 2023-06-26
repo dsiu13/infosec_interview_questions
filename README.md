@@ -25,6 +25,7 @@
 
 #### What are some of the biggest security vulnerabilities of 2020?
 - The four of the most targeted vulnerabilities in 2020 affected remote work, VPNs, or cloud-based technologies. (Data from cisa.gov)
+
 |                          Exploit Name                         |    CVE #   |            Type           |
 |:-------------------------------------------------------------:|:----------:|:-------------------------:|
 | Citrix Application Delivery Controller (ADC) and Gateway 13.0 | 2019-19781 |       Code Execution      |
@@ -36,7 +37,6 @@
 |             Telerik UI - Insecure Deserialization             | 2019-18935 |            RCE            |
 |              Microsoft SharePoint Deserialization             |  2019-0604 |            RCE            |
 |                       ZeroLogon Netlogon                      |  2020-1472 |      Priv Escalation      |
-
 
 #### How do you keep up with cyber security?
 - Reddit RSS
