@@ -24,6 +24,19 @@
 - DoS (Denial of Service) and CSRF (Cross-Site request forgery) fell out of the OWASP Top 10, but are still common.
 
 #### What are some of the biggest security vulnerabilities of 2020?
+- The four of the most targeted vulnerabilities in 2020 affected remote work, VPNs, or cloud-based technologies. (Data from cisa.gov)
+|                          Exploit Name                         |    CVE #   |            Type           |
+|:-------------------------------------------------------------:|:----------:|:-------------------------:|
+| Citrix Application Delivery Controller (ADC) and Gateway 13.0 | 2019-19781 |       Code Execution      |
+|           Pulse Secure 8.1R15.1/8.2/8.3/9.0 SSL VPN           | 2019-11510 | Arbitrary File Disclosure |
+|     Fortinet FortiOS 5.6.3 - 5.6.7 / FortiOS 6.0.0 - 6.0.4    | 2018-13379 |   Credentials Disclosure  |
+|                  F5 Big-IP 13.1.3 Build 0.0.6                 |  2020-5902 |            RCE            |
+|                     Microsoft Office - OLE                    | 2017-11882 |            RCE            |
+|      Drupal < 8.3.9 / < 8.4.6 / < 8.5.1 - 'Drupalgeddon2'     |  2018-7600 |            RCE            |
+|             Telerik UI - Insecure Deserialization             | 2019-18935 |            RCE            |
+|              Microsoft SharePoint Deserialization             |  2019-0604 |            RCE            |
+|                       ZeroLogon Netlogon                      |  2020-1472 |      Priv Escalation      |
+
 
 #### How do you keep up with cyber security?
 - Reddit RSS
