@@ -38,6 +38,14 @@
 |              Microsoft SharePoint Deserialization             |  2019-0604 |            RCE            |
 |                       ZeroLogon Netlogon                      |  2020-1472 |      Priv Escalation      |
 
+#### What are some of the biggest security vulnerabilities of 2021?
+- CVE-2021-44228 aka Log4Shell affected Apache’s Log4j library. An actor exploits this vulnerability by submitting a specially crafted request to a vulnerable system that causes that system to execute arbitrary code. This vulnerability was disclosed in December 2021. It was a rapid widespread method of exploitation.
+
+#### What are some of the biggest security vulnerabilities of 2022?
+- Twitter Zero Day. An Application Programming Interface (API) vulnerability was exploited. Twitter's systems would tell what Twitter account the submitted email addresses or phone number was associated with.
+
+#### What are some of the biggest security vulnerabilities of 2022?
+
 #### How do you keep up with cyber security?
 - Reddit RSS
 - darkreading
